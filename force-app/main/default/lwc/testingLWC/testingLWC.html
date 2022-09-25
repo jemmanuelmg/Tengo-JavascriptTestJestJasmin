@@ -1,0 +1,82 @@
+<!--
+  @description       : 
+  @author            : emmanuel.martinez@tengo.co
+  @group             : 
+  @last modified on  : 09-11-2020
+  @last modified by  : emmanuel.martinez@tengo.co
+  Modifications Log 
+  Ver   Date         Author                       Modification
+  1.0   09-09-2020   emmanuel.martinez@tengo.co   Initial Version
+-->
+<template>
+
+  <div class="white-background padding-container">
+    <div>
+        <div><b>Basic Input Output Example:</b></div>
+        <lightning-input type="number" class="input-num1" label="Number 1:" placeholder="Enter a first number" step="0.01"></lightning-input>
+
+        <lightning-input type="number" class="input-num2" label="Number 2:" placeholder="Enter a second number" step="0.01"></lightning-input>
+
+        <br>
+
+        <lightning-button onclick={add} variant="brand" label="Add" title="Add" class="button add-button"></lightning-button>
+        
+        <lightning-button onclick={substract} variant="brand" label="Substract" title="Substract" class="button substract-button"></lightning-button>
+        
+        <lightning-button onclick={multiply} variant="brand" label="Multiply" title="Multiply" class="button multiply-button"></lightning-button>
+        
+        <lightning-button onclick={divide} variant="brand" label="Divide" title="Divide" class="button divide-button"></lightning-button>
+        
+        <lightning-button onclick={potentiate} variant="brand" label="Potentiate" title="Potentiate" class="button potentiate-button"></lightning-button>
+        
+        <lightning-button onclick={root} variant="brand" label="Apply root" title="Apply root" class="button find-root-button"></lightning-button>
+        
+        <lightning-button onclick={fibonacci} variant="brand" label="Find Fibonacci" title="Find Fibonacci" class="button fibonacci-button"></lightning-button>
+    </div>
+    
+    <br>
+
+    <div>
+      <div><b>Result of Operation is:</b></div>
+      <br>
+      <br>
+      <div class="result-div">{resultOfOperation}</div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <div><b>Datatable Example</b></div>
+
+    <template if:true={thereAreAccounts}>
+      <lightning-datatable 
+        key-field="id" 
+        data={accountList} 
+        columns={columns}
+        hide-checkbox-column="true"
+        class="account-data-table">
+      </lightning-datatable> 
+    </template>
+    <template if:false={thereAreAccounts}>
+      <div class="no-accounts-message">There are no Accounts to show</div>
+    </template>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div><b>Iteration Example</b></div>
+    <template if:true={thereAreAccounts}>
+    <div class="slds-box">
+      <template for:each={accountList} for:item="account">
+        <lightning-pill label={account.Region__c} key={account.Id} class="account-region-pill"></lightning-pill>
+      </template>
+    </div>
+    </template>
+
+
+
+  </div> 
+
+</template>
